@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-# Ce script configure les résolutions IP pour localhost et facebook.com
+# This script modifies /etc/hosts so that localhost resolves to 127.0.0.2 and facebook.com resolves to 8.8.8.8
 
-# Ajout des nouvelles entrées dans /etc/hosts
-sudo sed -i '/127.0.0.1 localhost/c\127.0.0.2 localhost' /etc/hosts
-sudo sed -i '/facebook.com/d' /etc/hosts
+# Remove any existing lines mentioning "localhost" or "facebook.com" to avoid duplicates
+sudo sed -i "/localhost/d" /etc/hosts
+sudo sed -i "/facebook.com/d" /etc/hosts
+
+# Add the new host entries
+echo "127.0.0.2 localhost" | sudo tee -a /etc/hosts
 echo "8.8.8.8 facebook.com" | sudo tee -a /etc/hosts
-
-echo "Les modifications ont été effectuées."
