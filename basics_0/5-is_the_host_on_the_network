@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Vérifie si l'hôte est accessible via ping
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <IP_address>"
+    exit 1
+fi
+
+ping -c 5 "$1"

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Liste les ports TCP et UDP ouverts
+
+if command -v ss > /dev/null; then
+    ss -tuln
+else
+    netstat -tuln
+fi
